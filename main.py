@@ -12,9 +12,9 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/")
 async def read_root():
-    return """
+    return HTMLResponse("""
     <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -101,7 +101,7 @@ async def read_root():
 </body>
 </html>
 
-    """
+    """)
 #    return templates.TemplateResponse(
 #        request=request, name="index.html", context={"id": variable_precio}
 #    )
