@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Taxímetro</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Taxímetro</h1>
+        <p>Precio actual: <span id="precio">{{ id }}</span> €</p>
+        <p>Estado: <span id="estado">Parado</span></p>
+        <button class="btn start" id="btnInicio">Iniciar Trayecto</button>
+        <button class="btn stop" id="btnFin">Finalizar Trayecto</button>
+        <button class="btn config" id="btnConfig">Configurar Tarifas</button>
+        
+        <div id="configPanel" class="hidden">
+            <h3>Cambiar Tarifas</h3>
+            <label>Precio en marcha (€): <input type="number" id="tarifaMarcha" step="0.01"></label><br>
+            <label>Precio detenido (€): <input type="number" id="tarifaParado" step="0.01"></label><br>
+            <button class="btn start" id="guardarTarifas">Guardar</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', path='/js/scripts.js') }}"></script>
+</body>
+</html>
