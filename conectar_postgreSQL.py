@@ -18,8 +18,8 @@ try:
     print("Conexión exitosa. Fecha y hora del servidor:", result[0])
 
     # Cerrar conexión
-    cursor.close()
-    conn.close()
+    #cursor.close()
+    #conn.close()
 
 except Exception as e:
     print("Error conectando a la base de datos:", e)
