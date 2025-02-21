@@ -12,6 +12,10 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
+
+#pull request
+
+
 @app.get("/r")
 async def get_root(request: Request):
     return HTMLResponse(templates.TemplateResponse(

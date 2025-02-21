@@ -1,6 +1,31 @@
 # install psycopg2-binary
 import psycopg2
+import os
+# URL de conexión desde las variables de entorno
+DATABASE_URL = os.getenv("DATABASE_URL", "postgres://usuario:password@host:puerto/dbname")
 
+try:
+    # Establecer conexión
+    conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+
+    # Crear un cursor
+    cursor = conn.cursor()
+
+    # Ejecutar una consulta
+    cursor.execute("SELECT NOW();")
+    result = cursor.fetchone()
+
+    print("Conexión exitosa. Fecha y hora del servidor:", result[0])
+
+    # Cerrar conexión
+    cursor.close()
+    conn.close()
+
+except Exception as e:
+    print("Error conectando a la base de datos:", e)
+
+
+#####
 try:
     #connection = psycopg2.connect(f"postgresql://{pas_sql.user_sql}:{pas_sql.password_sql}@alpha.europe.mkdb.sh:5432/{pas_sql.name_sql}")
     connection = psycopg2.connect(f"postgresql://ukanzjez:wcnekxjkudklpgwqcmdk@alpha.europe.mkdb.sh:5432/rnpnasxv") 
