@@ -12,17 +12,17 @@ try:
     cursor = conn.cursor()
 
     # Ejecutar una consulta
-    cursor.execute("SELECT NOW();")
-    result = cursor.fetchone()
+    #cursor.execute("SELECT NOW();")
+    #result = cursor.fetchone()
 
-    print("Conexión exitosa. Fecha y hora del servidor:", result[0])
+    #print("Conexión exitosa. Fecha y hora del servidor:", result[0])
 
     # Cerrar conexión
     #cursor.close()
     #conn.close()
 
-except Exception as e:
-    print("Error conectando a la base de datos:", e)
+except:
+    print("Error conectando a la base de datos:")
 
 
 #####
