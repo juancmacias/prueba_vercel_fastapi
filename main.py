@@ -21,14 +21,14 @@ templates = Jinja2Templates(directory="templates")
 #pull request
 
 
-@app.get("/")
+@app.get("/r")
 async def get_root(request: Request):
     return HTMLResponse(templates.TemplateResponse(
         request=request, name="index.html", context={"id": tarifa_parado})
     )
 mi_variable = os.environ.get("SECRET_KEY", "No definida")
 
-@app.get("/r")
+@app.get("/")
 async def read_root():
     return HTMLResponse("""
     <!DOCTYPE html>
@@ -36,7 +36,7 @@ async def read_root():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>"""+ str(mi_variable)  + """ Gestión de Taxímetro</title>
+    <title>"""+ str(tarifa_parado)  + """ Gestión de Taxímetro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -71,7 +71,7 @@ async def read_root():
 <body>
     <div class="container">
         <h1>Taxímetro</h1>
-        <p>Precio actual: <span id="precio">"""+ str("tarifa_parado") +"""</span> €</p>
+        <p>Precio actual: <span id="precio">"""+ str(tarifa_parado) +"""</span> €</p>
         <p>Estado: <span id="estado">Parado</span></p>
         <button class="btn start" id="btnInicio">Iniciar Trayecto</button>
         <button class="btn stop" id="btnFin">Finalizar Trayecto</button>

@@ -1,14 +1,15 @@
 # install psycopg2-binary
 import psycopg2
 import os
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 
 
-#load_dotenv()
+load_dotenv()
 
 try:
     #conn = psycopg2.connect(f"postgresql://ukanzjez:wcnekxjkudklpgwqcmdk@alpha.europe.mkdb.sh:5432/rnpnasxv") 
-    conn = psycopg2.connect(os.environ.get("DATA_BASE"))
+    sql_ar = os.environ.get("DATA_BASE")
+    conn = psycopg2.connect(sql_ar)
     cursor = conn.cursor()
 except: 
       print("No se ha podido conectar a la base de datos.")
