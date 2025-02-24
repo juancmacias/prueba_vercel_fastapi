@@ -1,12 +1,16 @@
 # install psycopg2-binary
 import psycopg2
 import os
+from dotenv import load_dotenv
+load_dotenv()
+MY_CONNECTION = os.getenv("POSTGRES_PRISMA_URL")
 # URL de conexión desde las variables de entorno
-DATABASE_URL = os.getenv("DATABASE_URL", "postgres://usuario:password@host:puerto/dbname")
+#DATABASE_URL = os.getenv("DATABASE_URL", "postgres://usuario:password@host:puerto/dbname")
 
 try:
     # Establecer conexión
-    conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+    conn = psycopg2.connect(MY_CONNECTION, sslmode="require")
+
 
     # Crear un cursor
     cursor = conn.cursor()
@@ -60,5 +64,5 @@ insertar_sql('''CREATE TABLE IF NOT EXISTS trayecto(id SERIAL PRIMARY KEY, fecha
 insertar_sql('''CREATE TABLE IF NOT EXISTS usuarios (id SERIAL PRIMARY KEY, nombre VARCHAR(100) NOT NULL, usuario VARCHAR(50) UNIQUE NOT NULL)''')
 
 #insertar_sql('''INSERT INTO usuarios(nombre, usuario) VALUES('Juan', 'a94652aa97c7211ba8954dd15a3cf838')''')
-insertar_sql('''INSERT INTO precios(estado, precio) VALUES('parado', 0.02)''')
+insertar_sql('''INSERT INTO precios(estado, precio) VALUES('parado', 2.02)''')
 insertar_sql('''INSERT INTO precios(estado, precio) VALUES('marcha', 0.05)''')
