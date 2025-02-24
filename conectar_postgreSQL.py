@@ -2,7 +2,10 @@
 import psycopg2
 import os
 from dotenv import load_dotenv
-load_dotenv()
+from pathlib import Path
+dotenv_path = Path('.env')
+load_dotenv(dotenv_path=dotenv_path)
+#load_dotenv()
 #MY_CONNECTION = os.getenv("POSTGRES_PRISMA_URL")
 #MY_CONNECTION = os.environ.get('POSTGRES_PRISMA_URL')
 #my_prueba = os.getenv("PRUEBA_5")
