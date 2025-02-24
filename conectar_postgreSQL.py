@@ -2,11 +2,11 @@
 import psycopg2
 import os
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv('.env')
 MY_CONNECTION = os.getenv("POSTGRES_PRISMA_URL")
 MY_CONNECTION = os.environ.get('POSTGRES_PRISMA_URL')
 #my_prueba = os.getenv("PRUEBA_5")
-my_prueba = os.environ.get('PRUEBA_5', os.getenv("PRUEBA_5"))
+my_prueba =  os.getenv("PRUEBA_5")
 
 # URL de conexión desde las variables de entorno
 #DATABASE_URL = os.getenv("DATABASE_URL", "postgres://usuario:password@host:puerto/dbname")
