@@ -9,7 +9,7 @@ load_dotenv(dotenv_path=dotenv_path)
 #MY_CONNECTION = os.getenv("POSTGRES_PRISMA_URL")
 #MY_CONNECTION = os.environ.get('POSTGRES_PRISMA_URL')
 #my_prueba = os.getenv("PRUEBA_5")
-my_prueba =  os.getenv("PRUEBA_5")
+my_prueba =  os.getenv("PRUEBA_5", os.environ.get("PRUEBA_5"))
 
 # URL de conexión desde las variables de entorno
 #DATABASE_URL = os.getenv("DATABASE_URL", "postgres://usuario:password@host:puerto/dbname")
