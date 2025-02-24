@@ -6,13 +6,13 @@ from fastapi.templating import Jinja2Templates
 import os
 from dotenv import load_dotenv
 
-#import conectar_postgreSQL as con
+import conectar_postgreSQL as con
 # instalar fastapi uvicorn
 # para correr el proyecto uvicorn main:app --reload
 load_dotenv()
 app = FastAPI()
 variable_precio = 1000
-#tarifa_parado = con.sql_select_one('precios', "estado = 'parado'")
+tarifa_parado = con.sql_select_one('precios', "estado = 'parado'")
 #app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
@@ -21,14 +21,14 @@ templates = Jinja2Templates(directory="templates")
 #pull request
 
 
-@app.get("/r")
+@app.get("/")
 async def get_root(request: Request):
     return HTMLResponse(templates.TemplateResponse(
-        request=request, name="index.html", context={"id": "tarifa_parado"})
+        request=request, name="index.html", context={"id": tarifa_parado})
     )
 mi_variable = os.environ.get("SECRET_KEY", "No definida")
 
-@app.get("/")
+@app.get("/r")
 async def read_root():
     return HTMLResponse("""
     <!DOCTYPE html>
