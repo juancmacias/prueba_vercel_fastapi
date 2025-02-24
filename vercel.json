@@ -3,8 +3,7 @@
   "builds": [
     {
       "src": "main.py",
-      "use": "@vercel/python",
-      "SECRET_KEY": "@SECRET_KEY"
+      "use": "@vercel/python"
     }
   ],
   "routes": [
