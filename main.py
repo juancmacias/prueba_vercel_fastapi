@@ -27,6 +27,7 @@ async def get_root(request: Request):
         request=request, name="index.html", context={"id": "tarifa_parado"})
     )
 mi_variable = os.environ.get("SECRET_KEY", "No definida")
+
 @app.get("/")
 async def read_root():
     return HTMLResponse("""
@@ -35,7 +36,7 @@ async def read_root():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>"""+ str(mi_variable) +""" Gestión de Taxímetro</title>
+    <title>"""+ str(mi_variable)  + """ Gestión de Taxímetro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
