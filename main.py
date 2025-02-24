@@ -1,15 +1,19 @@
+
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import os
+from dotenv import load_dotenv
 
-import conectar_postgreSQL as con
+#import conectar_postgreSQL as con
 # instalar fastapi uvicorn
 # para correr el proyecto uvicorn main:app --reload
+load_dotenv()
 app = FastAPI()
 variable_precio = 1000
-tarifa_parado = con.sql_select_one('precios', "estado = 'parado'")
-app.mount("/static", StaticFiles(directory="static"), name="static")
+#tarifa_parado = con.sql_select_one('precios', "estado = 'parado'")
+#app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
@@ -20,7 +24,7 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/r")
 async def get_root(request: Request):
     return HTMLResponse(templates.TemplateResponse(
-        request=request, name="index.html", context={"id": tarifa_parado})
+        request=request, name="index.html", context={"id": "tarifa_parado"})
     )
 
 @app.get("/")
@@ -31,7 +35,7 @@ async def read_root():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Taxímetro</title>
+    <title>"""+ str(os.getenv("SECRET_KEY", "NO HAY")) +"""Gestión de Taxímetro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -66,7 +70,7 @@ async def read_root():
 <body>
     <div class="container">
         <h1>Taxímetro</h1>
-        <p>Precio actual: <span id="precio">"""+ str(tarifa_parado) +"""</span> €</p>
+        <p>Precio actual: <span id="precio">"""+ str("tarifa_parado") +"""</span> €</p>
         <p>Estado: <span id="estado">Parado</span></p>
         <button class="btn start" id="btnInicio">Iniciar Trayecto</button>
         <button class="btn stop" id="btnFin">Finalizar Trayecto</button>

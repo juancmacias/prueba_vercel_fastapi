@@ -1,46 +1,12 @@
 # install psycopg2-binary
 import psycopg2
 import os
-from dotenv import load_dotenv
-from pathlib import Path
-dotenv_path = Path('.env')
-load_dotenv(dotenv_path=dotenv_path)
-#load_dotenv()
-#MY_CONNECTION = os.getenv("POSTGRES_PRISMA_URL")
-#MY_CONNECTION = os.environ.get('POSTGRES_PRISMA_URL')
-#my_prueba = os.getenv("PRUEBA_5")
-my_prueba =  os.getenv("PRUEBA_5", os.environ["PRUEBA_5"])
+#from dotenv import load_dotenv
 
-# URL de conexión desde las variables de entorno
-#DATABASE_URL = os.getenv("DATABASE_URL", "postgres://usuario:password@host:puerto/dbname")
+#load_dotenv()
 
 try:
-    # Establecer conexión
-    #conn = psycopg2.connect(MY_CONNECTION, sslmode="require")
-
-
-    # Crear un cursor
-    #cursor = conn.cursor()
-
-    # Ejecutar una consulta
-    #cursor.execute("SELECT NOW();")
-    #result = cursor.fetchone()
-
-    #print("Conexión exitosa. Fecha y hora del servidor:", result[0])
-
-    # Cerrar conexión
-    #cursor.close()
-    #conn.close()
-
-#except:
-#    print("Error conectando a la base de datos:")
-
-
-#####
-#try:
-#    #connection = psycopg2.connect(f"postgresql://{pas_sql.user_sql}:{pas_sql.password_sql}@alpha.europe.mkdb.sh:5432/{pas_sql.name_sql}")
-#    connection = psycopg2.connect(f"postgresql://ukanzjez:wcnekxjkudklpgwqcmdk@alpha.europe.mkdb.sh:5432/rnpnasxv") 
-    conn = psycopg2.connect(my_prueba)
+    conn = psycopg2.connect(f"postgresql://ukanzjez:wcnekxjkudklpgwqcmdk@alpha.europe.mkdb.sh:5432/rnpnasxv") 
     cursor = conn.cursor()
 except: 
       print("No se ha podido conectar a la base de datos.")
@@ -63,7 +29,7 @@ def sql_select_all(table, order="DESC"):
     return cursor
 
 # borrar datos de la tabla
-insertar_sql("TRUNCATE TABLE precios")
+#insertar_sql("TRUNCATE TABLE precios")
 # crear tabla de precios si no existe 
 insertar_sql(f"CREATE TABLE IF NOT EXISTS precios(id SERIAL PRIMARY KEY,estado CHAR(20) NOT NULL,precio FLOAT)")
 # crear tabla de trayectos si no existe 
