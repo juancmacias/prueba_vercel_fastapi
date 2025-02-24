@@ -3,8 +3,8 @@ import psycopg2
 import os
 from dotenv import load_dotenv
 load_dotenv('.env')
-MY_CONNECTION = os.getenv("POSTGRES_PRISMA_URL")
-MY_CONNECTION = os.environ.get('POSTGRES_PRISMA_URL')
+#MY_CONNECTION = os.getenv("POSTGRES_PRISMA_URL")
+#MY_CONNECTION = os.environ.get('POSTGRES_PRISMA_URL')
 #my_prueba = os.getenv("PRUEBA_5")
 my_prueba =  os.getenv("PRUEBA_5")
 
