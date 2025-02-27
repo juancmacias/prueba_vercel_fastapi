@@ -19,7 +19,6 @@ def insertar_sql(eje):
     cursor.execute(eje)
     #connection.commit()
     conn.commit()
-    
 # recuperar un único registro
 def sql_select_one(table, where):
     cursor.execute(f"SELECT * FROM {table} WHERE {where}")
