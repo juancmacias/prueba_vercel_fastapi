@@ -16,8 +16,6 @@ tarifa_parado = con.sql_select_one('precios', "estado = 'parado'")
 #app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
-
-
 #pull request
 
 
