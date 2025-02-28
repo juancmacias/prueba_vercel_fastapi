@@ -8,7 +8,9 @@
     
 </head>
 <body>
-    <div class="container">
+    <section class="container">
+    {% include "include/header.html" %}
+    
         <h1>Taxímetro</h1>
         <p>Precio actual: <span id="precio">{{ id }}</span> €</p>
         <p>Estado: <span id="estado">Parado</span></p>
@@ -22,7 +24,9 @@
             <label>Precio detenido (€): <input type="number" id="tarifaParado" step="0.01"></label><br>
             <button class="btn start" id="guardarTarifas">Guardar</button>
         </div>
-    </div>
+    
+        {% include "include/footer.html" %}
+    </section>
     <script src="{{ url_for('static', path='/js/scripts.js') }}"></script>
 </body>
 </html>

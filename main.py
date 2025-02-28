@@ -13,17 +13,19 @@ load_dotenv()
 app = FastAPI()
 variable_precio = 1000
 tarifa_parado = con.sql_select_one('precios', "estado = 'parado'")
-#app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 #pull request
 
 
-@app.get("/r")
-async def get_root(request: Request):
-    return HTMLResponse(templates.TemplateResponse(
-        request=request, name="index.html", context={"id": tarifa_parado})
-    )
+
+@app.get("/r", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {
+        "request": request,
+        "nombre": variable_precio
+    })
 mi_variable = os.environ.get("SECRET_KEY", "No definida")
 
 @app.get("/")
